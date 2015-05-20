@@ -26,7 +26,15 @@ class StudentsController extends Controller {
         }
 //dd($students);
 
-        return view('students.index', compact('students'));
+        $grades = ClassGradeController::getGradesWithTitle();
+
+
+
+        return view('students.index', compact('students', 'grades'));
+    }
+
+    public function getStudentsByGradeClass($grade, $class){
+
     }
 
 }

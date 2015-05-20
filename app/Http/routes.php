@@ -30,9 +30,20 @@ Route::get('classgrade/sync', array(
 	'uses' => 'ClassGradeController@sync'
 ));
 
-Route::get('classgrade/grades', array(
+/*Route::get('classgrade/grades', array(
 	'as' => 'classgrade.grades',
 	'uses' => 'ClassGradeController@getGrades'
+));
+
+Route::get('classgrade/classes/{grade}', array(
+	'as' => 'classgrade.classes',
+	'uses' => 'ClassGradeController@getClasses'
+));*/
+
+
+Route::post('classgrade/classes/{grade}', array(
+	'as' => 'classgrade.classes',
+	'uses' => 'ClassGradeController@getClassesWithTitle'
 ));
 
 //从学科网同步年级班级信息

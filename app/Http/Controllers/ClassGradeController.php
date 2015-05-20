@@ -38,15 +38,54 @@ class ClassGradeController extends Controller {
         return redirect('classgrade');
     }
 
-    public function getGrades(){
+    public static function getGrades(){
         $xlwGrades = DB::connection('sqlsrv')
             ->select('select Sgrade from Students group by Sgrade ORDER BY Sgrade ASC');
 
-        dd($xlwGrades);
+        $grades = array();
+        foreach ($xlwGrades as $xkwGrade) {
+            array_push($grades, $xkwGrade->Sgrade);
+        }
+
+        return $grades;
     }
 
-    public function getClasses(){
+    public static function getGradesWithTitle(){
+        $xlwGrades = DB::connection('sqlsrv')
+            ->select('select Sgrade from Students group by Sgrade ORDER BY Sgrade ASC');
 
+        $grades = ["请选择"];
+        foreach ($xlwGrades as $xkwGrade) {
+            array_push($grades, $xkwGrade->Sgrade);
+        }
+
+        return $grades;
+    }
+
+    public static function getClasses($grade){
+        $xkwClasses = DB::connection('sqlsrv')
+            ->select('select Sclass from Students where Sgrade=' . $grade . ' group by Sclass ORDER BY Sclass ASC');
+
+        $classes = array();
+        foreach ($xkwClasses as $xkwClass) {
+            array_push($classes, $xkwClass->Sclass);
+        }
+
+
+        return $classes;
+    }
+
+    public static function getClassesWithTitle($grade){
+        $xkwClasses = DB::connection('sqlsrv')
+            ->select('select Sclass from Students where Sgrade=' . $grade . ' group by Sclass ORDER BY Sclass ASC');
+
+        $classes = ["请选择"];
+        foreach ($xkwClasses as $xkwClass) {
+            array_push($classes, $xkwClass->Sclass);
+        }
+
+
+        return $classes;
     }
 
 }
