@@ -51,3 +51,13 @@ Route::get('students', array(
 	'as' => 'students.index',
 	'uses' => 'StudentsController@index'
 ));
+
+Route::post('students/{grade}/{class}', array(
+	'as' => 'students.getStudentsByGradeClass',
+	'uses' => 'StudentsController@getStudentsByGradeClass'
+));
+
+Route::post('scoretograde', array(
+	'as' => 'scoretograde.getStandard',
+	'uses' => 'ScoreToGradeController@getStandard'
+));

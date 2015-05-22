@@ -2,9 +2,10 @@
 <html>
 <head>
     <title>@yield('title')</title>
-    <link href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/patch.css" rel="stylesheet">
     <link href="../css/docs.min.css" rel="stylesheet">
+    <link href="../css/xkw-grade-helper.css" rel="stylesheet">
 </head>
 <body>
     @include('layouts.partials.nav')
@@ -17,8 +18,8 @@
         @yield('content')
     </div>
 
-    <script src="http://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 
     @yield('javascript')
 

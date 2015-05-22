@@ -33,8 +33,26 @@ class StudentsController extends Controller {
         return view('students.index', compact('students', 'grades'));
     }
 
-    public function getStudentsByGradeClass($grade, $class){
+    public function getStudentsByGradeClass($grade, $class)
+    {
+        $xkw_students = Students::get()->where('Sgrade', $grade)->where('Sclass', $class);
+        $students = array();
 
+
+        if (count($xkw_students) == 0) {
+
+        } else {
+            foreach ($xkw_students as $xkw_student) {
+                array_push($students, array(
+                    'Sname' => iconv("GBK", "UTF-8", $xkw_student->Sname),
+                    'Sscore' => iconv("GBK", "UTF-8", $xkw_student->Sscore),
+                    'Sattitude' => iconv("GBK", "UTF-8", $xkw_student->Sattitude)
+                ));
+            }
+        }
+
+
+
+        return $students;
     }
-
 }
