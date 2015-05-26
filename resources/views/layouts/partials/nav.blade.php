@@ -12,10 +12,10 @@
         <nav class="collapse navbar-collapse bs-navbar-collapse">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="../getting-started/">起步</a>
+                    <a href="{{ route('students.index') }}">查看学生数据</a>
                 </li>
                 <li>
-                    <a href="../css/">全局 CSS 样式</a>
+                    <a href="{{ route('students.sync') }}">同步学生数据</a>
                 </li>
                 <li class="active">
                     <a href="../components/">组件</a>

@@ -21,7 +21,9 @@
                 {!! Form::close() !!}
 
             {!! Form::open(['class' => 'form-inline',
-                'id' => 'standard-form']) !!}
+                'id' => 'standard-form',
+                'method' => 'post',
+                'route' => 'scoretograde.getStandard']) !!}
 
             <div class="form-group">
                 {!! Form::label('', '评分标准：', ['id' => '',
@@ -59,7 +61,7 @@
             </div>
             <div class="form-group">
 
-                {!! Form::button("确定并核算等级", ['id' => 'txt-standard-D-down',
+                {!! Form::button("确定并核算等级", ['id' => 'btn-submit',
                 'class' => 'btn btn-primary', 'onclick' => 'onSubmitStandardClick()']) !!}
 
             </div>
@@ -75,7 +77,9 @@
                   <tr>
                       <th>姓名</th>
                       <th>作业成绩</th>
-                      <th>平时成绩</th>
+                      <th>表现成绩</th>
+                      <th>总成绩</th>
+                      <th>最后等级</th>
                   </tr>
              </thead>
             <tbody></tbody>

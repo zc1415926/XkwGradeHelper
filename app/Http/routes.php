@@ -52,12 +52,48 @@ Route::get('students', array(
 	'uses' => 'StudentsController@index'
 ));
 
+Route::get('students/sync', array(
+	'as' => 'students.sync',
+	'uses' => 'StudentsController@sync'
+));
+
+Route::get('students/{grade}/{class}', array(
+	'as' => 'students.getStudentsByGradeClass',
+	'uses' => 'StudentsController@getStudentsByGradeClass'
+));
+
 Route::post('students/{grade}/{class}', array(
 	'as' => 'students.getStudentsByGradeClass',
 	'uses' => 'StudentsController@getStudentsByGradeClass'
 ));
 
+/*Route::get('classgrade/sync', array(
+	'as' => 'classgrade.sync',
+	'uses' => 'ClassGradeController@sync'
+));*/
+
+
+
+/*Route::get('scoretograde', array(
+	'as' => 'scoretograde.index',
+	'uses' => 'ScoreToGradeController@index'
+));*/
 Route::post('scoretograde', array(
 	'as' => 'scoretograde.getStandard',
 	'uses' => 'ScoreToGradeController@getStandard'
 ));
+
+/*Route::get('standard', array(
+	'as' => 'standard.index',
+	'uses' => 'StandardController@index'
+));*/
+
+Route::post('standard/{grade}/{class}', array(
+	'as' => 'standard.getStandardByGradeClass',
+	'uses' => 'StandardController@getStandardByGradeClass'
+));
+
+/*Route::post('standard', array(
+	'as' => 'standard.index',
+	'uses' => 'StandardController.index'
+));*/

@@ -1,6 +1,9 @@
 /**
  * Created by zc on 15-5-22.
  */
+//$('#standard-form').hide();
+
+
 function getClassesFromGrade(){
     $.ajax({
         type:"post",
@@ -18,6 +21,8 @@ function getClassesFromGrade(){
 
             //年级或班级变更后，清除原来表格中的学生信息
             $("tbody").empty();
+            //还要清除原来的评分标准
+            cleanStandardForm();
         },
         success:function(data){
             //数据读取成功
@@ -53,25 +58,35 @@ function getStudentsFromClass(){
             //年级或班级变更后，清除原来表格中的学生信息
             $("tbody").empty();
             $('#myModal').modal({backdrop: 'static', keyboard: false});
+            //还要清除原来的评分标准
+            cleanStandardForm();
         },
         success:function(data){
-
             data.forEach(function(student){
                 $("tbody").append("\<tr\>" +
-                "\<td\>" + student.Sname + "\</td\>" +
-                "\<td\>" + student.Sscore + "\</td\>" +
-                "\<td\>" + student.Sattitude + "\</td\>" +
+                "\<td class='name'\>" + student.name + "\</td\>" +
+                "\<td class='score'\>" + student.score + "\</td\>" +
+                "\<td class='attitude'\>" + student.attitude + "\</td\>" +
+                "\<td class='attitude'\>" + student.sum + "\</td\>" +
+                "\<td class='scoretograde'\>" + student.score_to_grade + "\</td\>" +
                 "\</tr\>");
-                console.log(student.Sname);
+                //console.log(student.Sname);
             });
             $('#myModal').modal('hide');
 
+            //切换班级后，如果这个班已经制订过评分标准，那么就读取出来
+            //显示在评分标准的Form里
+            getStandardByGradeClass();
         }
     });
 }
 
 function onSubmitStandardClick(){
-    var standardArray = {"standard-A-up": $("#txt-standard-A-up").val(),
+    var standardArray = {
+        "_token": $('form#standard-form input[name="_token"]').val(),
+        "grade": $("select.selSelectGrade").find("option:selected").text(),
+        "class": $("select.selSelectClass").find("option:selected").text(),
+        "standard-A-up": $("#txt-standard-A-up").val(),
         "standard-B-up": $("#txt-standard-B-up").val(),
         "standard-B-down": $("#txt-standard-B-down").val(),
         "standard-C-up": $("#txt-standard-C-up").val(),
@@ -79,15 +94,78 @@ function onSubmitStandardClick(){
         "standard-D-down": $("#txt-standard-D-down").val()};
     console.log(standardArray);
 
-    $.ajax(
-        type: 'POST',
-        'url': "/scoretograde",
+    $.post(
+        "/scoretograde",
+        /*{
+            "_token": $('form#standard-form input[name="_token"]').val(),
+            "grade": $("select.selSelectGrade").find("option:selected").text(),
+            "class": $("select.selSelectClass").find("option:selected").text(),
+            "standard-A-up": $("#txt-standard-A-up").val(),
+            "standard-B-up": $("#txt-standard-B-up").val(),
+            "standard-B-down": $("#txt-standard-B-down").val(),
+            "standard-C-up": $("#txt-standard-C-up").val(),
+            "standard-C-down": $("#txt-standard-C-down").val(),
+            "standard-D-down": $("#txt-standard-D-down").val()
+        },*/
         standardArray,
-        headers: {
-        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        },
-        success:function(data){
+        function(data){
+            console.log('standard');
             console.log(data);
-        }
+            //refreshStudentsTable();
+
+        },
+        'json'
     );
+
+    return false;
+}
+
+function refreshStudentsTable(){
+
+}
+
+
+function cleanStandardForm(){
+
+        //$("select.selSelectGrade").find("option:selected").text(),
+        //$("select.selSelectClass").find("option:selected").text(),
+        $("#txt-standard-A-up").val("");
+        $("#txt-standard-B-up").val("");
+        $("#txt-standard-B-down").val("");
+        $("#txt-standard-C-up").val("");
+        $("#txt-standard-C-down").val("");
+        $("#txt-standard-D-down").val("");
+}
+
+function getStandardByGradeClass(){
+    $.ajax({
+        type: "post",
+        url: "/standard/" +
+        $("select.selSelectGrade").find("option:selected").text() +
+        "/" +
+        $("select.selSelectClass").find("option:selected").text(),
+
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        },
+
+        success:function(data){
+
+            if(data == ""){
+                console.log("no standard");
+            }else{
+                console.log("get standard!");
+                //console.log(data[0]);
+
+                $("#txt-standard-A-up").val(data[0]['standard-A-up']);
+                $("#txt-standard-B-up").val(data[0]['standard-B-up']);
+                $("#txt-standard-B-down").val(data[0]['standard-B-down']);
+                $("#txt-standard-C-up").val(data[0]['standard-C-up']);
+                $("#txt-standard-C-down").val(data[0]['standard-C-down']);
+                $("#txt-standard-D-down").val(data[0]['standard-D-down']);
+            }
+
+
+        }
+    });
 }
