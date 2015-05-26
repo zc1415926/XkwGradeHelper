@@ -32,31 +32,37 @@
             <div class="form-group">
                 {!! Form::label('', 'A：', ['class' => 'control-label']) !!}
                 {!! Form::text("txt-standard-A-up", null, ['id' => 'txt-standard-A-up',
-                'class' => 'form-control standard']) !!}
+                    'class' => 'form-control standard',
+                    'way-data' => 'A-to-B']) !!}
                 {!! Form::label('', '以上', ['class' => 'control-label']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('', 'B：', ['class' => 'control-label']) !!}
                 {!! Form::text("txt-standard-B-up", null, ['id' => 'txt-standard-B-up',
-                'class' => 'form-control standard']) !!}
+                    'class' => 'form-control standard',
+                    'way-data' => 'A-to-B']) !!}
                 {!! Form::label('', '～', ['class' => 'control-label']) !!}
                 {!! Form::text("txt-standard-B-down", null, ['id' => 'txt-standard-B-down',
-                'class' => 'form-control standard']) !!}
+                    'class' => 'form-control standard',
+                    'way-data' => 'B-to-C']) !!}
                 {!! Form::label('', '『含』', ['class' => 'control-label']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('', 'C：', ['class' => 'control-label']) !!}
                 {!! Form::text("txt-standard-C-up", null, ['id' => 'txt-standard-C-up',
-                'class' => 'form-control standard']) !!}
+                    'class' => 'form-control standard',
+                    'way-data' => 'B-to-C']) !!}
                 {!! Form::label('', '～', ['class' => 'control-label']) !!}
                 {!! Form::text("txt-standard-C-down", null, ['id' => 'txt-standard-C-down',
-                'class' => 'form-control standard']) !!}
+                'class' => 'form-control standard',
+                    'way-data' => 'C-to-D']) !!}
                 {!! Form::label('', '『含』', ['class' => 'control-label']) !!}
             </div>
             <div class="form-group">
                 {!! Form::label('', 'D：', ['class' => 'control-label']) !!}
                 {!! Form::text("txt-standard-D-down", null, ['id' => 'txt-standard-D-down',
-                'class' => 'form-control standard']) !!}
+                    'class' => 'form-control standard',
+                    'way-data' => 'C-to-D']) !!}
                 {!! Form::label('', '以下', ['class' => 'control-label']) !!}
             </div>
             <div class="form-group">
