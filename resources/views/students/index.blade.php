@@ -7,16 +7,17 @@
 
                 {!! Form::open(['class' => 'form-inline']) !!}
 
-
-                        {!! Form::label('lblSelectGrade', '年级：') !!}
-                        {!! Form::select('selSelectGrade', $grades, null, ['onchange'=>'getClassesFromGrade()',
+                <div class="form-group">
+                    {!! Form::label('lblSelectGrade', '年级：') !!}
+                    {!! Form::select('selSelectGrade', $grades, null, ['onchange'=>'getClassesFromGrade()',
                         'class' => 'form-control selSelectGrade']) !!}
-
-                        {!! Form::label('lblSelectClass', '班级：') !!}
-                        {!! Form::select('selSelectClass', array(), null, ['onchange' => 'getStudentsFromClass()',
+                </div>
+                <div class="form-group">
+                    {!! Form::label('lblSelectClass', '班级：') !!}
+                    {!! Form::select('selSelectClass', array(), null, ['onchange' => 'getStudentsFromClass()',
                         'class' => 'form-control selSelectClass',
                         'disabled' => 'disabled']) !!}
-
+                </div>
 
                 {!! Form::close() !!}
 

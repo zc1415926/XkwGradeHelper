@@ -34,8 +34,8 @@
           <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/resources/views/students/index.blade.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.6424702" vertical-offset="1101" max-vertical-offset="2684">
-                  <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.4767064" vertical-offset="0" max-vertical-offset="2706">
+                  <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -45,11 +45,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="get-students-info.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/public/js/get-students-info.js">
+          <file leaf-file-name="xkw-grade-helper.css" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/public/css/xkw-grade-helper.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.88299024" vertical-offset="2575" max-vertical-offset="3894">
-                  <caret line="80" column="7" selection-start-line="80" selection-start-column="7" selection-end-line="80" selection-end-column="7" />
+                <state vertical-scroll-proportion="0.2820513" vertical-offset="0" max-vertical-offset="936">
+                  <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
                   <folding />
                 </state>
               </provider>
@@ -80,7 +80,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/ClassGradeController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ClassGradeController.php" />
         <option value="$PROJECT_DIR$/public/css/zc-doc.css" />
-        <option value="$PROJECT_DIR$/public/css/xkw-grade-helper.css" />
         <option value="$PROJECT_DIR$/database/migrations/2015_05_25_010812_CreateTableStandard.php" />
         <option value="$PROJECT_DIR$/app/Standard.php" />
         <option value="$PROJECT_DIR$/app/XkwStudents.php" />
@@ -96,6 +95,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/StudentsController.php" />
         <option value="$PROJECT_DIR$/public/js/get-students-info.js" />
         <option value="$PROJECT_DIR$/resources/views/layouts/default.blade.php" />
+        <option value="$PROJECT_DIR$/public/css/xkw-grade-helper.css" />
         <option value="$PROJECT_DIR$/resources/views/students/index.blade.php" />
       </list>
     </option>
@@ -361,6 +361,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XkwGradeHelper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XkwGradeHelper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -710,13 +728,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/xkw-grade-helper.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22827497" vertical-offset="0" max-vertical-offset="771">
-          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Providers/AppServiceProvider.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6849642" vertical-offset="42" max-vertical-offset="880">
@@ -995,14 +1006,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/get-students-info.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.88299024" vertical-offset="2575" max-vertical-offset="3894">
-          <caret line="80" column="7" selection-start-line="80" selection-start-column="7" selection-end-line="80" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StudentsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5232936" vertical-offset="2157" max-vertical-offset="3080">
@@ -1057,10 +1060,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/get-students-info.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40411702" vertical-offset="2575" max-vertical-offset="3894">
+          <caret line="134" column="10" selection-start-line="134" selection-start-column="10" selection-end-line="134" selection-end-column="10" />
+          <folding>
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="/** Created by zc on 15-5-22. ...*/" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{&quot;type&quot;: &quot;post&quot;...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{&quot;type&quot;: &quot;post&quot;...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="/*...*/" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="//..." />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{&quot;type&quot;: &quot;post&quot;...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1432614742173" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/xkw-grade-helper.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2820513" vertical-offset="0" max-vertical-offset="936">
+          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/students/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6424702" vertical-offset="1101" max-vertical-offset="2684">
-          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.4767064" vertical-offset="0" max-vertical-offset="2706">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
         </state>
       </provider>
