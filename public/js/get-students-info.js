@@ -112,6 +112,7 @@ function onSubmitStandardClick(){
             console.log('standard');
             console.log(data);
             //refreshStudentsTable();
+            getStudentsFromClass();
 
         },
         'json'
