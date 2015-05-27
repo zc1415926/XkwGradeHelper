@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class StudentsController extends Controller {
 
 	public function index(){
-        $xkw_students = XkwStudents::all();
+       /* $xkw_students = XkwStudents::all();
         $students = array();
 
         foreach($xkw_students as $xkw_student){
@@ -25,13 +25,13 @@ class StudentsController extends Controller {
            // array_push($students, iconv("GBK", "UTF-8", $xkw_student->Sscore));
            // array_push($students, iconv("GBK", "UTF-8", $xkw_student->Sattitude));
         }
-//dd($students);
+//dd($students);*/
 
         $grades = ClassGradeController::getGradesWithTitle();
 
 
 
-        return view('students.index', compact('students', 'grades'));
+        return view('students.index', compact('grades'));
     }
 
     public function getStudentsByGradeClass($grade, $class)

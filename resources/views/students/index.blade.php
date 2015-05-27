@@ -5,17 +5,20 @@
 
 
 
-                {!! Form::open(['class' => 'form-inline']) !!}
+                {!! Form::open(['class' => 'form-inline',
+                    'id' => 'grade-class-form']) !!}
 
                 <div class="form-group">
                     {!! Form::label('lblSelectGrade', '年级：') !!}
                     {!! Form::select('selSelectGrade', $grades, null, ['onchange'=>'getClassesFromGrade()',
-                        'class' => 'form-control selSelectGrade']) !!}
+                        'class' => 'form-control selSelectGrade',
+                        'id' => 'selSelectGrade']) !!}
                 </div>
                 <div class="form-group">
                     {!! Form::label('lblSelectClass', '班级：') !!}
                     {!! Form::select('selSelectClass', array(), null, ['onchange' => 'getStudentsFromClass()',
                         'class' => 'form-control selSelectClass',
+                        'id' => 'selSelectClass',
                         'disabled' => 'disabled']) !!}
                 </div>
 
@@ -112,6 +115,6 @@
 @stop
 
 @section('javascript')
-    <script src="../js/get-students-info.js"></script>
+    <script src="../js/students.js"></script>
 
 @stop

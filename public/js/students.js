@@ -2,7 +2,68 @@
  * Created by zc on 15-5-22.
  */
 //$('#standard-form').hide();
+var validatorgrade;
+$(document).ready(function(){
+    $.validator.messages.required = "";
+    $.validator.messages.number = "";
+    validatorgrade = $("#grade-class-form").validate({
+        rules: {
+            'selSelectGrade':{
+                "gradeclass":true
+            },
+            'selSelectClass':{
+                "gradeclass":true
+            }
+        }
+    });
 
+  $("#standard-form").validate({
+        rules: {
+            'txt-standard-A-up':{
+                required: true,
+                number: true
+            },
+            'txt-standard-B-up':{
+                required: true,
+                number: true
+            },
+            'txt-standard-B-down':{
+                required: true,
+                number: true
+            },
+            'txt-standard-C-up':{
+                required: true,
+                number: true
+            },
+            'txt-standard-C-down':{
+                required: true,
+                number: true
+            },
+
+            'txt-standard-D-down':{
+                required: true,
+                number: true
+            }
+
+
+        }
+    });
+
+      $.validator.addMethod('gradeclass', function(value, element, params){
+
+        return $(element).find("option:selected").index() > 0;
+    }, '');
+     /* $("#grade-class-form").validate({
+        'selSelectGrade':{
+            //required: true,
+            number: true
+        },
+        'selSelectClasss':{
+            //required: true,
+            number: true
+        }
+    });*/
+});
 
 function getClassesFromGrade(){
     $.ajax({
@@ -82,7 +143,16 @@ function getStudentsFromClass(){
 }
 
 function onSubmitStandardClick(){
-    var standardArray = {
+
+    if($('#grade-class-form').valid() && $('#standard-form').valid()){
+        alert('yes!');
+    }else{
+
+        alert('oh');
+    }
+
+
+   /* var standardArray = {
         "_token": $('form#standard-form input[name="_token"]').val(),
         "grade": $("select.selSelectGrade").find("option:selected").text(),
         "class": $("select.selSelectClass").find("option:selected").text(),
@@ -96,17 +166,6 @@ function onSubmitStandardClick(){
 
     $.post(
         "/scoretograde",
-        /*{
-            "_token": $('form#standard-form input[name="_token"]').val(),
-            "grade": $("select.selSelectGrade").find("option:selected").text(),
-            "class": $("select.selSelectClass").find("option:selected").text(),
-            "standard-A-up": $("#txt-standard-A-up").val(),
-            "standard-B-up": $("#txt-standard-B-up").val(),
-            "standard-B-down": $("#txt-standard-B-down").val(),
-            "standard-C-up": $("#txt-standard-C-up").val(),
-            "standard-C-down": $("#txt-standard-C-down").val(),
-            "standard-D-down": $("#txt-standard-D-down").val()
-        },*/
         standardArray,
         function(data){
             console.log('standard');
@@ -117,7 +176,7 @@ function onSubmitStandardClick(){
         },
         'json'
     );
-
+*/
     return false;
 }
 
@@ -170,3 +229,4 @@ function getStandardByGradeClass(){
         }
     });
 }
+
