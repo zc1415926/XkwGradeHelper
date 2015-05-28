@@ -18,6 +18,12 @@
         @yield('content')
     </div>
 
+    <footer class="bs-docs-footer" role="contentinfo">
+        <div class="container">
+
+        </div>
+    </footer>
+
     <script src="../js/jquery.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/jquery.validate.min.js"></script>

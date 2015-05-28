@@ -93,10 +93,10 @@
             <thead>
             <tr>
                 <th>姓名</th>
+                <th>最后等级</th>
+                <th>总成绩</th>
                 <th>作业成绩</th>
                 <th>表现成绩</th>
-                <th>总成绩</th>
-                <th>最后等级</th>
             </tr>
             </thead>
             <tbody></tbody>
@@ -105,40 +105,8 @@
 
 
 
+@include('students.partials.modal')
 
-    <!-- Modal -->
-    <div class="modal fade bs-example-modal-lg" id="waitModal" tabindex="-1" role="dialog"
-         aria-labelledby="waitModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">正在读取学生信息</h4>
-                </div>
-                <div class="modal-body">
-                    <h1>请等那么一哈哈！</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade bs-example-modal-lg" id="formUnvalidModal" tabindex="-1" role="dialog"
-         aria-labelledby="formUnvalidModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">出错了！</h4>
-                </div>
-                <div class="modal-body">
-                    <h1>你有些信息没有填哦！已经用红色标出。</h1>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">晓得了，马上填起！</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 @stop

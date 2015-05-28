@@ -11,11 +11,11 @@
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse">
             <ul class="nav navbar-nav">
-                <li>
+                <li class="active">
                     <a href="{{ route('students.index') }}">查看学生数据</a>
                 </li>
                 <li>
-                    <a href="{{ route('students.sync') }}">同步学生数据</a>
+                    <a href="#" onclick="showSyncStudentsDataConfirmModal()">同步学生数据</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

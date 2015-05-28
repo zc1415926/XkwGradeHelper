@@ -49,7 +49,7 @@ $(document).ready(function(){
         }
     });
 
-      $.validator.addMethod('gradeclass', function(value, element, params){
+    $.validator.addMethod('gradeclass', function(value, element, params){
 
         return $(element).find("option:selected").index() > 0;
     }, '');
@@ -98,7 +98,7 @@ function getClassesFromGrade(){
         error:function(data){
             $("select.selSelectClass").empty();
             console.log("error");
-            console.log(data);
+            //console.log(data);
         }
     });
 }
@@ -124,14 +124,14 @@ function getStudentsFromClass(){
             cleanStandardForm();
         },
         success:function(data){
-            console.log(data);
+            //console.log(data);
             data.forEach(function(student){
                 $("tbody").append("\<tr\>" +
                 "\<td class='name'\>" + student.name + "\</td\>" +
+                "\<td class='scoretograde'\>" + student.score_to_grade + "\</td\>" +
+                "\<td class='attitude'\>" + student.sum + "\</td\>" +
                 "\<td class='score'\>" + student.score + "\</td\>" +
                 "\<td class='attitude'\>" + student.attitude + "\</td\>" +
-                "\<td class='attitude'\>" + student.sum + "\</td\>" +
-                "\<td class='scoretograde'\>" + student.score_to_grade + "\</td\>" +
                 "\</tr\>");
                 //console.log(student.Sname);
             });
@@ -157,14 +157,14 @@ function onSubmitStandardClick(){
             "standard-C-up": $("#txt-standard-C-up").val(),
             "standard-C-down": $("#txt-standard-C-down").val(),
             "standard-D-down": $("#txt-standard-D-down").val()};
-        console.log(standardArray);
+        //console.log(standardArray);
 
         $.post(
             "/scoretograde",
             standardArray,
             function(data){
                 console.log('standard');
-                console.log(data);
+                //console.log(data);
                 //refreshStudentsTable();
                 getStudentsFromClass();
 
@@ -173,7 +173,7 @@ function onSubmitStandardClick(){
         );
     }else{
 
-        $('#formUnvalidModal').modal();
+        $('#formUnvalidModal').modal('show');
     }
 
 
@@ -182,8 +182,31 @@ function onSubmitStandardClick(){
   //  return false;
 }
 
-function refreshStudentsTable(){
+function showSyncStudentsDataConfirmModal(){
+    $('#confirmSyncStudentsDataModal').modal('show');
+}
 
+function syncStudentsData(){
+    $('#confirmSyncStudentsDataModal').modal('hide');
+    $.ajax({
+        type: "post",
+        url: "/students/sync",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        },
+        beforeSend:function(data){
+            $('#waitModal').modal('show');
+        },
+        success:function(data){
+            console.log('sync students data success!');
+            $('#waitModal').modal('hide');
+            $('#syncStudentsDataFinishModal').modal('show');
+            setTimeout(function(){$("#syncStudentsDataFinishModal").modal("hide")},3000);
+        },
+        error:function(data){
+            console.log('sync students data error...');
+        }
+    });
 }
 
 
@@ -231,4 +254,3 @@ function getStandardByGradeClass(){
         }
     });
 }
-
