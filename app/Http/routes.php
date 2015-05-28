@@ -57,12 +57,12 @@ Route::get('students/sync', array(
 	'uses' => 'StudentsController@sync'
 ));
 
-Route::get('students/{grade}/{class}', array(
+Route::get('students/{grade}/{class}/{order}', array(
 	'as' => 'students.getStudentsByGradeClass',
 	'uses' => 'StudentsController@getStudentsByGradeClass'
 ));
 
-Route::post('students/{grade}/{class}', array(
+Route::post('students/{grade}/{class}/{order}', array(
 	'as' => 'students.getStudentsByGradeClass',
 	'uses' => 'StudentsController@getStudentsByGradeClass'
 ));

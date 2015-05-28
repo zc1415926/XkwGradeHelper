@@ -34,10 +34,26 @@ class StudentsController extends Controller {
         return view('students.index', compact('grades'));
     }
 
-    public function getStudentsByGradeClass($grade, $class)
+    public function getStudentsByGradeClass($grade, $class, $order)
     {
-        //$xkw_students = XkwStudents::get()->where('Sgrade', $grade)->where('Sclass', $class);
-        $students = Students::get()->where('grade', $grade)->where('class', $class);
+        //$order = 0, 不故意排序；$order = 1，$sum由小到大； $order = 2， $sum由大到小
+
+        if(0 == $order){
+            $students = Students::where('grade', $grade)->where('class', $class)->get();
+        }
+        else
+        {
+            if($order == 1){
+                $showOrder = 'asc';
+            }else{
+                $showOrder = 'desc';
+            }
+
+            $students = Students::where('grade', $grade)->where('class', $class)
+                ->orderBy('sum', $showOrder)->get();
+
+        }
+
         $return_students = array();
 
         foreach($students as $student){
@@ -53,23 +69,11 @@ class StudentsController extends Controller {
             ));
         }
 
-/*
-        if (count($xkw_students) == 0) {
-
-        } else {
-            foreach ($xkw_students as $xkw_student) {
-                array_push($students, array(
-                    'Sname' => iconv("GBK", "UTF-8", $xkw_student->Sname),
-                    'Sscore' => iconv("GBK", "UTF-8", $xkw_student->Sscore),
-                    'Sattitude' => iconv("GBK", "UTF-8", $xkw_student->Sattitude)
-                ));
-            }
-        }*/
-
         //从sqlserver里读取数据后，转存到mysql里一次，并添加一个刷新按钮
 
 
         return $return_students;
+        //return [$grade,$class,$order];
     }
 
     public function sync(){

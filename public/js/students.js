@@ -109,20 +109,22 @@ function getStudentsFromClass(){
         url: "/students/" +
         $("select.selSelectGrade").find("option:selected").text() +
         "/" +
-        $("select.selSelectClass").find("option:selected").text(),
+        $("select.selSelectClass").find("option:selected").text() +
+        "/" +
+        $("select.selSelectShowOrder").find("option:selected").index(),
 
         headers: {
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
         },
-
         beforeSend:function(data){
             //年级或班级变更后，清除原来表格中的学生信息
             $("tbody").empty();
-            $('#myModal').modal({backdrop: 'static', keyboard: false});
+            $('#waitModal').modal({backdrop: 'static', keyboard: false});
             //还要清除原来的评分标准
             cleanStandardForm();
         },
         success:function(data){
+            console.log(data);
             data.forEach(function(student){
                 $("tbody").append("\<tr\>" +
                 "\<td class='name'\>" + student.name + "\</td\>" +
@@ -133,7 +135,7 @@ function getStudentsFromClass(){
                 "\</tr\>");
                 //console.log(student.Sname);
             });
-            $('#myModal').modal('hide');
+            $('#waitModal').modal('hide');
 
             //切换班级后，如果这个班已经制订过评分标准，那么就读取出来
             //显示在评分标准的Form里
@@ -145,39 +147,39 @@ function getStudentsFromClass(){
 function onSubmitStandardClick(){
 
     if($('#grade-class-form').valid() && $('#standard-form').valid()){
-        alert('yes!');
+        var standardArray = {
+            "_token": $('form#standard-form input[name="_token"]').val(),
+            "grade": $("select.selSelectGrade").find("option:selected").text(),
+            "class": $("select.selSelectClass").find("option:selected").text(),
+            "standard-A-up": $("#txt-standard-A-up").val(),
+            "standard-B-up": $("#txt-standard-B-up").val(),
+            "standard-B-down": $("#txt-standard-B-down").val(),
+            "standard-C-up": $("#txt-standard-C-up").val(),
+            "standard-C-down": $("#txt-standard-C-down").val(),
+            "standard-D-down": $("#txt-standard-D-down").val()};
+        console.log(standardArray);
+
+        $.post(
+            "/scoretograde",
+            standardArray,
+            function(data){
+                console.log('standard');
+                console.log(data);
+                //refreshStudentsTable();
+                getStudentsFromClass();
+
+            },
+            'json'
+        );
     }else{
 
-        alert('oh');
+        $('#formUnvalidModal').modal();
     }
 
 
-   /* var standardArray = {
-        "_token": $('form#standard-form input[name="_token"]').val(),
-        "grade": $("select.selSelectGrade").find("option:selected").text(),
-        "class": $("select.selSelectClass").find("option:selected").text(),
-        "standard-A-up": $("#txt-standard-A-up").val(),
-        "standard-B-up": $("#txt-standard-B-up").val(),
-        "standard-B-down": $("#txt-standard-B-down").val(),
-        "standard-C-up": $("#txt-standard-C-up").val(),
-        "standard-C-down": $("#txt-standard-C-down").val(),
-        "standard-D-down": $("#txt-standard-D-down").val()};
-    console.log(standardArray);
 
-    $.post(
-        "/scoretograde",
-        standardArray,
-        function(data){
-            console.log('standard');
-            console.log(data);
-            //refreshStudentsTable();
-            getStudentsFromClass();
 
-        },
-        'json'
-    );
-*/
-    return false;
+  //  return false;
 }
 
 function refreshStudentsTable(){
